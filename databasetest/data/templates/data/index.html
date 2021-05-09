@@ -1,0 +1,23 @@
+{% extends "data/layout.html" %}
+
+{% block body %}
+    <h1>History</h1>
+    <table>
+        <thead>
+            <th>Date Added</th>
+            <th>Text</th>
+            <th>Translation</th>
+            <th>Remarks</th>
+        </thead>
+        <tbody>
+            {% for entry in data %}
+            <tr>
+                <td>{{ entry.dateAdded }}</td>
+                <td>{{ entry.text }}</td>
+                <td>{{ entry.translation }}</td>
+                <td>{{ entry.remarks }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
