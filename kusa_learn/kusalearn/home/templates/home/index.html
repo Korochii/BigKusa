@@ -1,7 +1,23 @@
 {% extends "home/base_generic.html" %}
 
 {% block content %}
-  <h1>Home</h1>
+<div class="two-col"> 
+  <div class="col1" style="float: left;">
+      <textarea id="text" name="text" rows="4" cols="100" placeholder="Type in your text here" style="resize: none; overflow-y: scroll;"></textarea>
+  </div>
+  
+  
+  <div class="col2" style="float: right;">
+      <output id="output" name="output" rows="4" cols="100" type="text">
+        Output (Hard-coded for now, to be obtained from google translate api)
+      </output>
+  </div>
+    
+  
+</div>
+
+
+
   
   
 {% endblock %}
