@@ -1,0 +1,47 @@
+{% extends "home/base_generic.html" %}
+{% block content %}
+<br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>
+<form action="./translated" method="get">
+    <div class="form-group">
+        <h4><label for="exampleFormControlTextarea1">Input text here</label></h4>
+        <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <h4><label for="exampleFormControlSelect1">Language to translate from</label></h4>
+        <select class="form-control" id="exampleFormControlSelect1" name="inLanguage">
+            <!--to add more later-->
+            <option value="auto">Auto-Detect</option>
+            <option value="en">English</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="zh-cn">Chinese</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+        </select>
+    </div>
+
+    <br>
+
+    <div class="form-group">
+        <h4><label for="exampleFormControlSelect1">Language to translate to</label></h4>
+        <select class="form-control" id="exampleFormControlSelect1" name="outLanguage">
+            <!--to add more later-->
+            <option value="en">English</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="zh-cn">Chinese</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+        </select>
+    </div>
+
+    <br>
+
+    <div style="text-align: center;">
+        <button type="Submit" class="btn btn-primary btn-lg">Translate</button>
+    </div>
+</form>
+{% endblock %}
