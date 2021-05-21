@@ -6,6 +6,7 @@ from googletrans import Translator
 def index(request):
     return render(request, "home/index.html")
 
+
 def translated(request):
     inputText = request.GET.get('text')
     inputLang = request.GET.get('inLanguage')
