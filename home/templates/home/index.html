@@ -4,7 +4,7 @@
 <form action="./translated" method="get">
     <div class="form-group">
         <h4><label for="exampleFormControlTextarea1">Input text here</label></h4>
-        <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3" onkeyup="if (event.which === 13  && !event.shiftkey) {submit()}"></textarea>
     </div>
 
     <br>
