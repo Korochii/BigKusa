@@ -1,13 +1,11 @@
 {% extends "home/base_generic.html" %}
 {% block content %}
-<br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>  <br>
+
 <form action="./translated" method="get">
     <div class="form-group">
         <h4><label for="inLangFormControlTextarea1">Input text here</label></h4>
         <textarea name="text" class="form-control" id="inLangFormControlTextarea1" rows="3" onkeyup="if (event.which === 13  && !event.shiftkey) {submit()}"></textarea>
     </div>
-
-    <br>
 
     <div class="form-group">
         <h4><label for="inLangFormControlSelect1">Language to translate from</label></h4>
@@ -119,8 +117,6 @@
             <option value="zu">Zulu</option> 
         </select>
     </div>
-
-    <br>
 
     <div class="form-group">
         <h4><label for="outLangFormControlSelect1">Language to translate to</label></h4>
