@@ -32,8 +32,6 @@
 /*}*/
 
 
-
-
 /*.two-col {*/
 /*    overflow: hidden;!* Makes this div contain its floats *!*/
 /*    position: fixed;*/
@@ -50,6 +48,6 @@
 /*    justify-content: center;*/
 /*}*/
 
-  * {
-     margin: 5px;
-    }
+* {
+    margin: 5px;
+}
