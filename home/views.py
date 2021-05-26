@@ -15,3 +15,4 @@ def translated(request):
     outputResult = tler.translate(inputText, outputLang, inputLang) # return type is googletrans.models.Translated
     outputText = outputResult.text
     return render(request, "home/translated.html", {'input': inputText, 'output': outputText})
+

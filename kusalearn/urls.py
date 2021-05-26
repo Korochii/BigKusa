@@ -15,13 +15,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+# Use include() to add paths from the catalog application
+from django.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-# Use include() to add paths from the catalog application
-from django.urls import include
+urlpatterns += [
+    path('accounts/', include('accounts.urls')),
+]
+
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
+
+
 
 urlpatterns += [
     path('home/', include('home.urls')),
@@ -31,11 +40,17 @@ urlpatterns += [
     path('log/', include('log.urls')),
 ]
 
-#Add URL maps to redirect the base URL to our application
-from django.views.generic import RedirectView
+
+
+from django.views.generic.base import TemplateView
 urlpatterns += [
-    path('', RedirectView.as_view(url='home/', permanent=True)),
+    path('', TemplateView.as_view(template_name='home.html'), name='home'),
 ]
+#Add URL maps to redirect the base URL to our application
+#from django.views.generic import RedirectView
+#urlpatterns += [
+#    path('', RedirectView.as_view(url='home/', permanent=True)),
+#]
 
 # Use static() to add url mapping to serve static files during development (only)
 from django.conf import settings
