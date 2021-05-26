@@ -77,8 +77,13 @@ WSGI_APPLICATION = 'kusalearn.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd63pms7jhj0jk2',
+        'USER': 'izujwruuuoycev',
+        'PASSWORD': '17719fddd85afd2293d5d4a095b3271641fb6d7d494cf7323364dbadbf558b38',
+        'HOST': 'ec2-54-243-92-68.compute-1.amazonaws.com',
+        'PORT': '5432'
+
     }
 }
 
