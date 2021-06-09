@@ -18,6 +18,12 @@ def translated(request):
     tler = Translator()
     outputResult = tler.translate(inputText, outputLang, inputLang) # return type is googletrans.models.Translated
     outputText = outputResult.text
+    new_entry = Entry()
+    new_entry.owner = user
+    new_entry.input_text = inputText
+    new_entry.output_text = outputText
+    new_entry.language = inputLang + '->' + outputLang
+    new_entry.save()
     context = {
         'owner' : user,
         'input_text' : inputText,
