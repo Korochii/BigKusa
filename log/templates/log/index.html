@@ -2,6 +2,23 @@
 
 {% block content %}
 <h1>Log</h1>
-
+<table>
+    <tr>
+        <th>Date Added</th>
+        <th>Text</th>
+        <th>Translation</th>
+        <th>Language</th>
+        <th>Remarks</th>
+    </tr>
+    {% for item in data %}
+    <tr> 
+        <td>{{ item.date_added }}</td>
+        <td>{{ item.input_text }}</td>
+        <td>{{ item.output_text }}</td>
+        <td>{{ item.language}}</td>
+        <td>{{ item.remarks }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
 {% endblock %}
