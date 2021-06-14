@@ -31,6 +31,7 @@ def translated(request):
         new_entry.input_text = inputText
         new_entry.output_text = outputText
         new_entry.language = language
+        new_entry.frequency = 1
         new_entry.save()
     context = {
         'owner' : user,
