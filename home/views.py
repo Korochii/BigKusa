@@ -19,11 +19,13 @@ def translated(request):
     outputResult = tler.translate(inputText, outputLang, inputLang) # return type is googletrans.models.Translated
     outputText = outputResult.text
     language = inputLang + ' -> ' + outputLang
+    updatedFrequency = int() # Instantiate counter variable to be passed into context
     # ifExist returns a boolean value depending on whether the entry is already in the database
     exist = Entry.objects.filter(input_text=inputText, output_text=outputText, language=language).exists()
     if (exist):
         item = Entry.objects.get(input_text=inputText, output_text=outputText, language=language)
         item.frequency += 1
+        updatedFrequency = item.frequency
         item.save()
     else: 
         new_entry = Entry()
@@ -32,12 +34,14 @@ def translated(request):
         new_entry.output_text = outputText
         new_entry.language = language
         new_entry.frequency = 1
+        updatedFrequency = 1
         new_entry.save()
     context = {
         'owner' : user,
         'input_text' : inputText,
         'output_text' : outputText,
         'language' : language,
+        'frequency' : updatedFrequency
     }
     return render(request, "home/translated.html", context)
 
