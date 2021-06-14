@@ -53,5 +53,5 @@
 }
 
 .dataTables_filter {
-    float: left !important;
+    text-align: left !important;
  }
