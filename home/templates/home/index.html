@@ -4,10 +4,9 @@
 <form action="./translated" method="get">
     <div class="form-group">
         <h4><label for="inLangFormControlTextarea1">Input text here</label></h4>
-        <textarea name="text" class="form-control" id="inLangFormControlTextarea1" rows="3"
+        <textarea name="text" class="form-control" id="inLangFormControlTextarea1" rows="3" required
                   onkeyup="if (event.which === 13  && !event.shiftkey) {submit()}"></textarea>
     </div>
-
     <div class="form-group">
         <h4><label for="inLangFormControlSelect1">Language to translate from</label></h4>
         <select class="form-control" id="inLangFormControlSelect1" name="inLanguage">
@@ -232,7 +231,7 @@
     <br>
 
     <div style="text-align: center;">
-        <button type="Submit" class="btn btn-primary btn-lg">Translate</button>
+        <button type="Submit" id="btSubmit" class="btn btn-primary btn-lg">Translate</button>
         <button type="reset" class="btn btn-primary btn-lg">Reset</button>
     </div>
 </form>
