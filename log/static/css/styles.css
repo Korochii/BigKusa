@@ -51,3 +51,7 @@
 * {
     margin: 5px;
 }
+
+.dataTables_filter {
+    float: left !important;
+ }
