@@ -4,7 +4,8 @@
 <form action="./translated" method="get">
     <div class="form-group">
         <h4><label for="inLangFormControlTextarea1">Input text here</label></h4>
-        <textarea name="text" class="form-control" id="inLangFormControlTextarea1" rows="3" onkeyup="if (event.which === 13  && !event.shiftkey) {submit()}"></textarea>
+        <textarea name="text" class="form-control" id="inLangFormControlTextarea1" rows="3"
+                  onkeyup="if (event.which === 13  && !event.shiftkey) {submit()}"></textarea>
     </div>
 
     <div class="form-group">
@@ -48,7 +49,7 @@
             <option value="he">Hebrew</option>
             <option value="hi">Hindi</option>
             <option value="hmn">Hmong</option>
-            <option value="hu">Hungarian</option>    
+            <option value="hu">Hungarian</option>
             <option value="is">Icelandic</option>
             <option value="ig">Igbo</option>
             <option value="id">Indonesian</option>
@@ -114,7 +115,7 @@
             <option value="xh">Xhosa</option>
             <option value="yi">Yiddish</option>
             <option value="yo">Yoruba</option>
-            <option value="zu">Zulu</option> 
+            <option value="zu">Zulu</option>
         </select>
     </div>
 
@@ -158,7 +159,7 @@
             <option value="he">Hebrew</option>
             <option value="hi">Hindi</option>
             <option value="hmn">Hmong</option>
-            <option value="hu">Hungarian</option>    
+            <option value="hu">Hungarian</option>
             <option value="is">Icelandic</option>
             <option value="ig">Igbo</option>
             <option value="id">Indonesian</option>
@@ -232,6 +233,7 @@
 
     <div style="text-align: center;">
         <button type="Submit" class="btn btn-primary btn-lg">Translate</button>
+        <button type="reset" class="btn btn-primary btn-lg">Reset</button>
     </div>
 </form>
 {% endblock %}
