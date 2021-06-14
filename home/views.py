@@ -18,17 +18,25 @@ def translated(request):
     tler = Translator()
     outputResult = tler.translate(inputText, outputLang, inputLang) # return type is googletrans.models.Translated
     outputText = outputResult.text
-    new_entry = Entry()
-    new_entry.user = user
-    new_entry.input_text = inputText
-    new_entry.output_text = outputText
-    new_entry.language = inputLang + ' -> ' + outputLang
-    new_entry.save()
+    language = inputLang + ' -> ' + outputLang
+    # ifExist returns a boolean value depending on whether the entry is already in the database
+    exist = Entry.objects.filter(input_text=inputText, output_text=outputText, language=language).exists()
+    if (exist):
+        item = Entry.objects.get(input_text=inputText, output_text=outputText, language=language)
+        item.frequency += 1
+        item.save()
+    else: 
+        new_entry = Entry()
+        new_entry.user = user
+        new_entry.input_text = inputText
+        new_entry.output_text = outputText
+        new_entry.language = language
+        new_entry.save()
     context = {
         'owner' : user,
         'input_text' : inputText,
         'output_text' : outputText,
-        'language' : inputLang + ' -> ' + outputLang,
+        'language' : language,
     }
     return render(request, "home/translated.html", context)
 

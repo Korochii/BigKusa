@@ -10,4 +10,5 @@ class Entry(models.Model):
     input_text = models.TextField('Text')
     output_text = models.TextField('Translation')
     language = models.CharField('Language', max_length=120)
+    frequency = models.IntegerField('Frequency')
     remarks = models.TextField('Remarks', blank=True)
