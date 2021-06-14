@@ -28,7 +28,6 @@ def translated(request):
     if (exist):
         item = Entry.objects.get(input_text=inputText, output_text=outputText, language=language)
         item.frequency += 1
-        item.date_added = datetime.datetime.utcnow().replace(tzinfo=utc)
         updatedFrequency = item.frequency
         item.save()
     else: 
