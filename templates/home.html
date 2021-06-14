@@ -5,8 +5,8 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
+  <h2>Redirecting to homepage...</h2>
+  <meta http-equiv="refresh" content="3; URL='/home'" />
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>
