@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'log.apps.LogConfig',
     'accounts',
-    'django_tables2'
 ]
 
 MIDDLEWARE = [
