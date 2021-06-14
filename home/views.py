@@ -11,7 +11,7 @@ def index(request):
 
 @login_required
 def translated(request):
-    user = request.user.id # Retrieve user id
+    user = request.user # Retrieve user id
     inputText = request.GET.get('text')
     inputLang = request.GET.get('inLanguage')
     outputLang = request.GET.get('outLanguage')
@@ -19,16 +19,16 @@ def translated(request):
     outputResult = tler.translate(inputText, outputLang, inputLang) # return type is googletrans.models.Translated
     outputText = outputResult.text
     new_entry = Entry()
-    new_entry.owner = user
+    new_entry.user = user
     new_entry.input_text = inputText
     new_entry.output_text = outputText
-    new_entry.language = inputLang + '->' + outputLang
+    new_entry.language = inputLang + ' -> ' + outputLang
     new_entry.save()
     context = {
         'owner' : user,
         'input_text' : inputText,
         'output_text' : outputText,
-        'language' : inputLang + '->' + outputLang,
+        'language' : inputLang + ' -> ' + outputLang,
     }
     return render(request, "home/translated.html", context)
 

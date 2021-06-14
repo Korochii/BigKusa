@@ -4,5 +4,5 @@ from home.models import Entry
 class EntryTable(tables.Table):
     class Meta:
         model = Entry
-        exclude = ("id", "owner")
+        exclude = ("id", "user")
     
