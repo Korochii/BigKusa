@@ -22,7 +22,7 @@
         <td>{{ item.language}}</td>
         <td>{{ item.frequency}}</td>
         <td>{{ item.remarks }}</td>
-        <td> <a class="btn btn-default" href="{% url 'post_remove' pk=item.pk %}"><span class="glyphicon glyphicon-remove"></span></a></td>
+        <td> <a class="btn btn-default" href="{% url 'post_remove' pk=item.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
     </tr>
     {% endfor %}
     </tbody>
