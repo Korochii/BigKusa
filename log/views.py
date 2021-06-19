@@ -14,6 +14,6 @@ def index(request):
 
 @login_required()
 def post_remove(request, pk):
-    post = get_object_or_404(Entry, pk=pk)
+    post = get_object_or_404(Entry, pk=pk, user=request.user)
     post.delete()
     return HttpResponseRedirect('/log')
