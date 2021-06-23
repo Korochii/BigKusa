@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from home.models import Entry
 from django.shortcuts import get_object_or_404
+import logging
 
 # Create your views here.
 @login_required
@@ -16,4 +17,11 @@ def index(request):
 def post_remove(request, pk):
     post = get_object_or_404(Entry, pk=pk, user=request.user)
     post.delete()
+    return HttpResponseRedirect('/log')
+
+
+@login_required()
+def InsertQuoteAction(request):
+    
+    
     return HttpResponseRedirect('/log')
