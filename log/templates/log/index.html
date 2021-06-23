@@ -10,8 +10,7 @@
         <th>Language</th>
         <th>Frequency</th>
         <th>Remarks</th>
-        <th>Delete</th>
-        <th class="edit-actions">Edit</th>
+        <th class="edit-actions">Action</th>
     </tr>
     </thead>
     <tbody>
@@ -23,10 +22,16 @@
         <td>{{ item.language}}</td>
         <td>{{ item.frequency}}</td>
         <td>{{ item.remarks }}</td>
-        <td> <a class="btn btn-default" href="{% url 'post_remove' pk=item.pk %}"><span
-                    class="glyphicon glyphicon-trash"></span></a></td>
-        <td class="edit-actions"> <button data-toggle="modal" data-target="#model{{item.pk}}" type="button"
-                class="btn btn-success edit-remark"><span class="glyphicon glyphicon-pencil"></span></button></td>
+        <div class="wrapper">
+        <td style="text-align: center;margin: auto;display: block;" class="edit-actions">
+            <button data-toggle="modal" data-target="#model{{item.pk}}" type="button"
+                    class="btn btn-success edit-remark"><span class="glyphicon glyphicon-pencil"></span></button>
+        </td>
+        </div>
+            <div class="wrapper2">
+        <td style="text-align: center;margin: auto;display: block;"><a class="btn btn-danger" href="{% url 'post_remove' pk=item.pk %}"><span
+                class="glyphicon glyphicon-trash"></span></a></td>
+            </div>
         <!-- Modal -->
         <div class="modal fade" id="model{{item.pk}}" tabindex="-1" role="dialog" aria-labelledby="Edit Remarks">
             <div class="modal-dialog" role="document">
@@ -43,7 +48,7 @@
                                 <label for="quote-input" class="col-sm-2 control-label">Remark:</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" id="quote-input" placeholder="Remark"
-                                        name="remark">
+                                           name="remark">
                                 </div>
                             </div>
                         </div>
@@ -62,8 +67,6 @@
 </table>
 
 
-
-
 {% endblock %}
 
 {% block js %}
@@ -71,17 +74,17 @@
 <script>
     $(document).ready(function () {
         $('#table_id').DataTable({
-            dom: "lBfrtip",
-            aaSorting: [[0, 'desc']],
-            buttons: ['copy', 'excel', 'pdf'],
-            language: {
-                searchPlaceholder: "Search records" // Might want to think of something else
-            },
-            columnDefs: [
-                { "orderable": false, "targets": 6 },
-                { "orderable": false, "targets": 7 }
-            ],
-        }
+                dom: "lBfrtip",
+                aaSorting: [[0, 'desc']],
+                buttons: ['copy', 'excel', 'pdf'],
+                language: {
+                    searchPlaceholder: "Search records" // Might want to think of something else
+                },
+                columnDefs: [
+                    {"orderable": false, "targets": 6},
+                    {"orderable": false, "targets": 7}
+                ],
+            }
         );
     });
 
