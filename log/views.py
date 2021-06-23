@@ -21,7 +21,9 @@ def post_remove(request, pk):
 
 
 @login_required()
-def InsertQuoteAction(request):
-    
-    
-    return HttpResponseRedirect('/log')
+def post_edit(request, pk):
+    if request.method == 'POST': 
+        post = get_object_or_404(Entry, pk=pk, user=request.user)
+        post.remarks = request.POST.get('remark')
+        post.save()
+        return HttpResponseRedirect('/log')
