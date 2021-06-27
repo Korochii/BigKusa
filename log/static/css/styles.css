@@ -57,8 +57,8 @@
 }
 
 .pagination{
-    display: inline-flex;
+    display: inline-flex !important;
 }
 div.dataTables_wrapper div.dataTables_paginate{
-    text-align: center;
+    text-align: center !important;
 }
