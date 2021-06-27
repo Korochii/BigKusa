@@ -24,9 +24,9 @@ def translated(request):
     language = inputLang + ' -> ' + outputLang
     updatedFrequency = int() # Instantiate counter variable to be passed into context
     # ifExist returns a boolean value depending on whether the entry is already in the database
-    exist = Entry.objects.filter(input_text=inputText, output_text=outputText, language=language).exists()
+    exist = Entry.objects.filter(input_text=inputText, output_text=outputText, language=language, user=user).exists()
     if (exist):
-        item = Entry.objects.get(input_text=inputText, output_text=outputText, language=language)
+        item = Entry.objects.get(input_text=inputText, output_text=outputText, language=language, user=user)
         item.frequency += 1
         updatedFrequency = item.frequency
         item.save()
