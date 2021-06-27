@@ -55,3 +55,10 @@
 .dataTables_filter {
     text-align: left !important;
 }
+
+.pagination{
+    display: inline-flex;
+}
+div.dataTables_wrapper div.dataTables_paginate{
+    text-align: center;
+}
