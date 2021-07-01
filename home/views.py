@@ -15,7 +15,7 @@ def index(request):
 @login_required
 def translated(request):
     user = request.user # Retrieve user id
-    inputText = request.GET.get('text')
+    inputText = request.GET.get('text').lower()
     inputLang = request.GET.get('inLanguage')
     outputLang = request.GET.get('outLanguage')
     tler = Translator()
