@@ -16,9 +16,9 @@ def index(request):
 def translated(request):
     user = request.user # Retrieve user id
     inputText = request.GET.get('text').lower()
-    inputLang = request.GET.get('inLanguage')
     outputLang = request.GET.get('outLanguage')
     tler = Translator()
+    inputLang = tler.detect(inputText).lang
     outputResult = tler.translate(inputText, outputLang, inputLang) # return type is googletrans.models.Translated
     outputText = outputResult.text
     language = inputLang + ' -> ' + outputLang
