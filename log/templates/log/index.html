@@ -26,11 +26,11 @@
         <div class="wrapper">
         <td style="text-align: center;margin: auto;display: block;" class="edit-actions">
             <button data-toggle="modal" data-target="#model{{item.pk}}" type="button"
-                    class="btn btn-success edit-remark"><span class="glyphicon glyphicon-pencil"></span></button>
+                    class="btn btn-success edit-remark" title="Edit Remark"><span class="glyphicon glyphicon-pencil"></span></button>
         </td>
         </div>
             <div class="wrapper2">
-        <td style="text-align: center;margin: auto;display: block;"><a class="btn btn-danger" href="{% url 'post_remove' pk=item.pk %}"><span
+        <td style="text-align: center;margin: auto;display: block;"><a class="btn btn-danger" href="{% url 'post_remove' pk=item.pk %}" title="Delete Entry"><span
                 class="glyphicon glyphicon-trash"></span></a></td>
             </div>
         <!-- Modal -->
