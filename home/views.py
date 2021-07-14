@@ -15,7 +15,7 @@ def index(request):
 @login_required
 def translated(request):
     user = request.user # Retrieve user id
-    inputText = request.GET.get('text').lower()
+    inputText = request.GET.get('text').casefold()
     outputLang = request.GET.get('outLanguage')
     tler = Translator()
     inputLang = tler.detect(inputText).lang
@@ -24,9 +24,9 @@ def translated(request):
     language = inputLang + ' -> ' + outputLang
     updatedFrequency = int() # Instantiate counter variable to be passed into context
     # ifExist returns a boolean value depending on whether the entry is already in the database
-    exist = Entry.objects.filter(input_text=inputText, output_text=outputText, language=language, user=user).exists()
+    exist = Entry.objects.filter(input_text__iexact=inputText, output_text__iexact=outputText, language=language, user=user).exists()
     if (exist):
-        item = Entry.objects.get(input_text=inputText, output_text=outputText, language=language, user=user)
+        item = Entry.objects.get(input_text__iexact=inputText, output_text__iexact=outputText, language=language, user=user)
         item.frequency += 1
         updatedFrequency = item.frequency
         item.save()
