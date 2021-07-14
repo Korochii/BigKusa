@@ -89,3 +89,7 @@ div.dataTables_wrapper div.dataTables_paginate{
     justify-content: center;
     align-items: center;
 }
+
+.errorlist {
+    color: red !important;
+}

@@ -149,3 +149,6 @@ LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = 'home'
 
 SITE_ID = 1
+
+# AllAuth Settings
+ACCOUNT_EMAIL_VERIFICATION = 'none'
