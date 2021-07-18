@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <title>{% block title %}KusaLearn{% endblock %}</title>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/home">
+        <div class="logo">
+          <img src="https://i.imgur.com/LhDzdIV.png">
+        </div>
+      </a>
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/home">KusaLearn</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/home">Home</a></li>
+        <li><a href="/log">Log</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+
+  {% load i18n %}
+
+
+  <h1>{% trans "Sign Out" %}</h1>
+
+  <p>{% trans 'Are you sure you want to sign out?' %}</p>
+
+  <form method="post" action="{% url 'account_logout' %}">
+    {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <button type="submit">{% trans 'Sign Out' %}</button>
+  </form>
+
+</body>
+
+</html>

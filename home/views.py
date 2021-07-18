@@ -15,25 +15,26 @@ def index(request):
 @login_required
 def translated(request):
     user = request.user # Retrieve user id
-    inputText = request.GET.get('text').lower()
+    inputText = request.GET.get('text').casefold()
     outputLang = request.GET.get('outLanguage')
     tler = Translator()
     inputLang = tler.detect(inputText).lang
     outputResult = tler.translate(inputText, outputLang, inputLang) # return type is googletrans.models.Translated
     outputText = outputResult.text
+    processedInput = tler.translate(inputText, inputLang, inputLang).text
     language = inputLang + ' -> ' + outputLang
     updatedFrequency = int() # Instantiate counter variable to be passed into context
-    # ifExist returns a boolean value depending on whether the entry is already in the database
-    exist = Entry.objects.filter(input_text=inputText, output_text=outputText, language=language, user=user).exists()
+    # exist returns a boolean value depending on whether the entry is already in the database
+    exist = Entry.objects.filter(input_text__iexact=processedInput, output_text__iexact=outputText, language=language, user=user).exists()
     if (exist):
-        item = Entry.objects.get(input_text=inputText, output_text=outputText, language=language, user=user)
+        item = Entry.objects.get(input_text__iexact=processedInput, output_text__iexact=outputText, language=language, user=user)
         item.frequency += 1
         updatedFrequency = item.frequency
         item.save()
     else: 
         new_entry = Entry()
         new_entry.user = user
-        new_entry.input_text = inputText
+        new_entry.input_text = processedInput
         new_entry.output_text = outputText
         new_entry.language = language
         new_entry.frequency = 1
@@ -41,7 +42,7 @@ def translated(request):
         new_entry.save()
     context = {
         'owner' : user,
-        'input_text' : inputText,
+        'input_text' : processedInput,
         'output_text' : outputText,
         'language' : language,
         'frequency' : updatedFrequency

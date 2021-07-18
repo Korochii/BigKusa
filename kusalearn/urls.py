@@ -26,7 +26,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 urlpatterns += [
@@ -46,15 +46,12 @@ urlpatterns += [
 urlpatterns += url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT})
     
 
-from django.views.generic.base import TemplateView
-urlpatterns += [
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
-]
+
 #Add URL maps to redirect the base URL to our application
-#from django.views.generic import RedirectView
-#urlpatterns += [
-#    path('', RedirectView.as_view(url='home/', permanent=True)),
-#]
+from django.views.generic import RedirectView
+urlpatterns += [
+    path('', RedirectView.as_view(url='home/', permanent=True)),
+]
 
 # Use static() to add url mapping to serve static files during development (only)
 from django.conf import settings

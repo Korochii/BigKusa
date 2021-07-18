@@ -10,20 +10,27 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
+from boto.s3.connection import S3Connection
+s3 = S3Connection(os.environ['EMAIL_USER'], os.environ['EMAIL_PASS'], os.environ['SECRET_KEY'], os.environ['DB_USER'], os.environ['DB_PASS'])
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l_$j0$7vw--ykp_!+v+%$pu21lm7fd45hk-s5w&6fuax=j$#t0'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['kusa-learn.herokuapp.com', '127.0.0.1']
 
@@ -40,6 +47,10 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'log.apps.LogConfig',
     'accounts',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount'
 ]
 
 MIDDLEWARE = [
@@ -81,8 +92,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd63pms7jhj0jk2',
-        'USER': 'izujwruuuoycev',
-        'PASSWORD': '17719fddd85afd2293d5d4a095b3271641fb6d7d494cf7323364dbadbf558b38',
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASS'),
         'HOST': 'ec2-54-243-92-68.compute-1.amazonaws.com',
         'PORT': '5432'
 
@@ -108,6 +119,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -136,3 +154,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/home'
 LOGOUT_REDIRECT_URL = 'home'
+
+SITE_ID = 1
+
+
+# AllAuth Settings
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/home'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = None
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
