@@ -154,6 +154,8 @@ SITE_ID = 1
 # Initialise environment variables
 env = environ.Env()
 environ.Env.read_env()
+from boto.s3.connection import S3Connection
+s3 = S3Connection(os.environ['EMAIL_USER'], os.environ['EMAIL_PASS'])
 
 # AllAuth Settings
 ACCOUNT_EMAIL_VERIFICATION = 'none'
@@ -168,8 +170,8 @@ ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = env('EMAIL_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_PASS')
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
