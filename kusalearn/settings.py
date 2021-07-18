@@ -17,11 +17,17 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
+from boto.s3.connection import S3Connection
+s3 = S3Connection(os.environ['EMAIL_USER'], os.environ['EMAIL_PASS'])
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-l_$j0$7vw--ykp_!+v+%$pu21lm7fd45hk-s5w&6fuax=j$#t0'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -151,11 +157,6 @@ LOGOUT_REDIRECT_URL = 'home'
 
 SITE_ID = 1
 
-# Initialise environment variables
-env = environ.Env()
-environ.Env.read_env()
-from boto.s3.connection import S3Connection
-s3 = S3Connection(os.environ['EMAIL_USER'], os.environ['EMAIL_PASS'])
 
 # AllAuth Settings
 ACCOUNT_EMAIL_VERIFICATION = 'none'
