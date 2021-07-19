@@ -41,9 +41,9 @@
   {% load i18n %}
 
 
-  <h1>{% trans "Sign Out" %}</h1>
+  <h1 style="margin:5px;">{% trans "Sign Out" %}</h1>
 
-  <p>{% trans 'Are you sure you want to sign out?' %}</p>
+  <p style="margin:5px;">{% trans 'Are you sure you want to sign out?' %}</p>
 
   <form method="post" action="{% url 'account_logout' %}">
     {% csrf_token %}
