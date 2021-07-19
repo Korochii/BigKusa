@@ -4,6 +4,7 @@
 <table id="table_id" class="table table-striped table-bordered" style="width: 100%">
     <thead>
         <tr>
+            <th></th>
             <th>Date Added/Updated</th>
             <th>Text</th>
             <th>Translation</th>
@@ -17,6 +18,7 @@
     <tbody>
         {% for item in data %}
         <tr>
+            <td><input class="checkbox" type="checkbox" value={{item.pk}}></td>
             <td>{{ item.date_added }}</td>
             <td>{{ item.input_text }}</td>
             <td>{{ item.output_text }}</td>
@@ -98,6 +100,26 @@
                     extend: 'print',
                     exportOptions: {
                         columns: [0, 1, 2, 3, 4, 5]
+                    }
+                },
+                {
+                    text: 'Delete Selected',
+                    action: function (e, dt, node, config) {
+                        var checkedValue = [];
+                        var inputElements = document.getElementsByClassName('checkbox');
+                        for (var i = 0; i < inputElements.length; i++) {
+                            if (inputElements[i].checked) {
+                                checkedValue[i] = inputElements[i].value;
+                            }
+                        }
+                        $.ajax({
+                            method: 'POST',
+                            url: '',
+                            data: { 'arr': JSON.stringify(checkedValue) },
+                            success: function () {
+                                location.reload();
+                            }
+                        });
                     }
                 },],
             language: {
