@@ -30,7 +30,7 @@ s3 = S3Connection(os.environ['EMAIL_USER'], os.environ['EMAIL_PASS'], os.environ
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['kusa-learn.herokuapp.com', '127.0.0.1']
 
