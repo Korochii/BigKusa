@@ -52,13 +52,21 @@
     margin: 5px;
 }
 
+
 .logo {
-    width: 46px;
-    height: 46px;
+    position: relative;
+    width: 50%;
+    height: 200%;
     border-radius: 10%;
     overflow: visible;
-    margin-top: 0px;
 }
+
+@media only screen and (max-width: 768px)  {
+    .logo {
+        display:none;
+    }
+}
+ 
 
 .dataTables_filter {
     text-align: left !important;
