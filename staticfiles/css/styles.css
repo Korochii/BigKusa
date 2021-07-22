@@ -55,9 +55,9 @@
 .logo {
     width: 46px;
     height: 46px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: -6px;
+    border-radius: 10%;
+    overflow: visible;
+    margin-top: 0px;
 }
 
 .dataTables_filter {
