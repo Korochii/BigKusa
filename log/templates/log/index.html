@@ -121,6 +121,21 @@
                             }
                         });
                     }
+                },
+                {
+                    text: 'Delete All',
+                    action: function (e, dt, node, config) {
+                        var confirmation = confirm("Are you sure that you want to delete all entry in this table?")
+                        if (confirmation) {
+                            $.ajax({
+                            method: 'POST',
+                            url: 'delete_all/',
+                            success: function () {
+                                location.reload();
+                            }
+                        });
+                        }
+                    }
                 },],
             language: {
                 searchPlaceholder: "Search records" // Might want to think of something else

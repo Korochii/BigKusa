@@ -40,3 +40,10 @@ def post_edit(request, pk):
         return HttpResponseRedirect('/log')
 
 
+@csrf_exempt
+@login_required()
+def post_delete_all(request):
+    if request.method == 'POST': 
+        Entry.objects.filter(user=request.user).delete()
+        return HttpResponseRedirect('/log')
+
