@@ -54,11 +54,11 @@
 
 
 .logo {
-    position: relative;
-    width: 50%;
-    height: 200%;
+    width: 46px;
+    height: 46px;
     border-radius: 10%;
     overflow: visible;
+    margin-top: 0px;
 }
 
 @media only screen and (max-width: 768px)  {
