@@ -3,7 +3,6 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 
-# Create your models here.
 class Entry(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date_added = models.DateTimeField('Date Added', auto_now=True)
