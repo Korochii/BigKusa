@@ -2,7 +2,7 @@ asgiref==3.3.4
 boto==2.49.0
 certifi==2020.12.5
 chardet==3.0.4
-Django==3.2.4
+Django==3.2.5
 django-allauth==0.45.0
 django-environ==0.4.5
 googletrans==3.1.0a0
